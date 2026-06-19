@@ -1,4 +1,9 @@
-import ollama
+import streamlit as st
+from groq import Groq
+
+client = Groq(
+    api_key=st.secrets["GROQ_API_KEY"]
+)
 
 def answer_question(question, context):
 
@@ -15,8 +20,8 @@ If the answer is not present in the context, say:
 'I could not find that information in the document.'
 """
 
-    response = ollama.chat(
-        model="llama3",
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
         messages=[
             {
                 "role": "user",
@@ -25,4 +30,4 @@ If the answer is not present in the context, say:
         ]
     )
 
-    return response["message"]["content"]
+    return response.choices[0].message.content

@@ -1,5 +1,6 @@
+.streamlit/secrets.toml
 .venv/
 __pycache__/
 *.pyc
-sections/document.md
-documents/file.pdf
+documents/
+sections/

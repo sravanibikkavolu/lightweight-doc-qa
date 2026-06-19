@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 
 from extractor import extract_pdf
@@ -13,6 +14,9 @@ uploaded_file = st.file_uploader(
 )
 
 if uploaded_file:
+
+    os.makedirs("documents", exist_ok=True)
+    os.makedirs("sections", exist_ok=True)
 
     pdf_path = "documents/file.pdf"
 
